@@ -15,6 +15,18 @@
 #define FUNCTION 4
 
 / {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -26,8 +38,8 @@
 // |    | SPC/Num | Bspc |  ( Caps )       ( Mute )  | Tab | Ent |     |
            bindings = <
             &kp APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &mt CAPS C &kp R  &kp L
-            &lt SYMBOLS A &mt LCTRL O &mt LALT E &mt LCMD U &kp I &kp D &mt RCMD H &mt RALT T &mt RCTRL N &lt SYMBOLS S
-            &mt LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_MUTE &kp B &kp M &kp W &kp V &mt RSHIFT Z
+            &lt SYMBOLS A &hm LCTRL O &hm LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hm RALT T &hm RCTRL N &lt SYMBOLS S
+            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_MUTE &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -39,10 +51,10 @@
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
 //         |  ,,  | //\ | |/&  |  ,,   |   ,,   |    `    |    "    |   ,,   |
            bindings = <
-            &kp EXCL &mt LS(LCTRL) AT &mt LS(LALT) LBRC &mt LS(LCMD) RBRC &none &none &mt RS(RCMD) LT &mt RS(RALT) GT &mt RS(RCTRL) ASTERISK &mt HASH LA(N3)
-            &kp CARET &mt LCTRL DOLLAR &mt LALT LPAR &mt LCMD RPAR &kp BACKSLASH &kp AMPS &mt RCMD EQL &mt RALT MINUS &mt RCTRL COLON &kp SEMICOLON
+            &kp EXCL &hm LS(LCTRL) AT &hm LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hm RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm HASH LA(N3)
+            &kp CARET &hm LCTRL DOLLAR &hm LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hm RALT MINUS &hm RCTRL COLON &kp SEMICOLON
             &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &trans &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
-            &trans &mt BACKSLASH SLASH &mt PIPE AMPS &kp GRAVE &kp DQT &trans
+            &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
            >;
 
         };
