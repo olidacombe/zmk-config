@@ -37,7 +37,7 @@
 // Esc/Lsft|  Q  |  J  |  K  |  X  |           |  B  |  M  |  W  |    V    |Z/Rsft|
 // |    | SPC/Num | Bspc |  ( Caps )       ( Mute )  | Tab | Ent |     |
            bindings = <
-            &kp APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &mt CAPS C &kp R  &kp L
+            &kp APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &lt SYMBOLS A &hm LCTRL O &hm LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hm RALT T &hm RCTRL N &lt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_MUTE &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
