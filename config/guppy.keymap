@@ -42,7 +42,7 @@
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_MUTE &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
         symbols {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
