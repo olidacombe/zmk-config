@@ -22,5 +22,7 @@
 		compatible = "pimoroni,trackball_pim447";
 		reg = <0xa>;
 		label = "TRACKBALL_PIM447";
+		move-factor = <2>;
+		int-gpios = <&pro_micro_d 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 	};
 };
