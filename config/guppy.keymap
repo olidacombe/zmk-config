@@ -1,4 +1,4 @@
-/* vi: ft=cpp
+/* 
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -13,6 +13,7 @@
 #define NUMBERS 2
 #define NAV 3
 #define FUNCTION 4
+#define BLUETOOTH 5
 
 / {
     behaviors {
@@ -37,7 +38,7 @@
 // Esc/Lsft|  Q  |  J  |  K  |  X  |           |  B  |  M  |  W  |    V    |Z/Rsft|
 // |    | SPC/Num | Bspc |  ( Caps )       ( Mute )  | Tab | Ent |     |
            bindings = <
-            &kp APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
+            &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &lt SYMBOLS A &hm LCTRL O &hm LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hm RALT T &hm RCTRL N &lt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_MUTE &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
@@ -97,5 +98,18 @@
 	    &none &none &none &none &none &none 
             >;
         };
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |        |     |      |
+//     |     |     |     |     |                |   P0    |    P1   |   P2   |  P3 |  P4  |
+//     |     |     |     |     |                |         |         |        |     |      |
+//         |      |     |  CLR |     |      |           |         |      |
+        bt {
+           bindings = <
+            &none &none &none &none &none &none &none &none &none &none
+            &none &none &none &none &none &kp BT_SEL 0 &kp BT_SEL 1 &kp BT_SEL 2 &kp BT_SEL 3 &kp BT_SEL 4
+            &none &none &none &none &kp BT_CLR &none &none &none &none &none
+	    &none &none &none &none &none &none 
+            >;
+        }
     };
 };

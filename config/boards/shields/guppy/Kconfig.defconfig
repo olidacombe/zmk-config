@@ -3,12 +3,12 @@ if SHIELD_GUPPY_LEFT
 config ZMK_KEYBOARD_NAME
     default "Guppy Left"
 
-config ZMK_SPLIT_BLE_ROLE_CENTRAL
-    default y
-
 endif
 
 if SHIELD_GUPPY_RIGHT
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+    default y
 
 config ZMK_KEYBOARD_NAME
     default "Guppy Right"
