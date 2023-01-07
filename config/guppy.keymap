@@ -63,12 +63,12 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //     |     |     |     |     |                |         |    4    |    5   |  6  |   7  |
 //     |     |     |     |     |                |   DEL   |    0    |    1   | 2/: |   3  |
-//     |     | C_VOL_DN | C_VOL_UP |  |         |         |    8    |    9   | +/- | *//  |
+//     |     | vol- | vol+ |   |                |         |    8    |    9   | +/- | *//  |
 //         |      |     |      |     |      |    =    |    .    |      |
            bindings = <
 	    &none &none &none &none &none &none &kp N4 &kp N5 &kp N6 &kp N7
 	    &none &none &none &none &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
-	    &none &none &none &none &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
+	    &none &none &kp C_VOL_DN &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
 	    &none &none &none &kp EQL &kp DOT &none
             >;
         };
