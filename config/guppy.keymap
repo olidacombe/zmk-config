@@ -110,6 +110,6 @@
             &none &none &none &none &kp BT_CLR &none &none &none &none &none
 	    &none &none &none &none &none &none 
             >;
-        }
+        };
     };
 };
