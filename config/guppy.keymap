@@ -1,4 +1,4 @@
-/* vi: ft=cpp
+/* 
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -13,6 +13,7 @@
 #define NUMBERS 2
 #define NAV 3
 #define FUNCTION 4
+#define BLUETOOTH 5
 
 / {
     behaviors {
@@ -37,7 +38,7 @@
 // Esc/Lsft|  Q  |  J  |  K  |  X  |           |  B  |  M  |  W  |    V    |Z/Rsft|
 // |    | SPC/Num | Bspc |  ( Caps )       ( Mute )  | Tab | Ent |     |
            bindings = <
-            &kp APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
+            &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &lt SYMBOLS A &hm LCTRL O &hm LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hm RALT T &hm RCTRL N &lt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_MUTE &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
@@ -59,13 +60,23 @@
 
         };
         numbers {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |    4    |    5   |  6  |   7  |
+//     |     |     |     |     |                |   DEL   |    0    |    1   | 2/: |   3  |
+//     |     | vol- | vol+ |   |                |         |    8    |    9   | +/- | *//  |
+//         |      |     |      |     |      |    =    |    .    |      |
            bindings = <
 	    &none &none &none &none &none &none &kp N4 &kp N5 &kp N6 &kp N7
 	    &none &none &none &none &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
-	    &none &none &none &none &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
+	    &none &none &kp C_VOL_DN &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
 	    &none &none &none &kp EQL &kp DOT &none
             >;
         };
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |    ^   |     |      |
+//     |     |     |     |     |                |         |    <    |    v   |  >  |      |
+//     |     |     |     |     |                |         |   HOME  |        | END |      |
+//         |      |     |      |     |      |    PgDN   |   PgUP  |      |
         nav {
            bindings = <
 	    &none &none &none &none &none &none &none &kp UP &none &none
@@ -74,11 +85,29 @@
 	    &none &none &none &kp PG_DN &kp PG_UP &none
             >;
         };
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  F5 |  F6 | F7  | F8  |     |                |         |         |        |     |      |
+//  F1 |  F2 | F3  | F4  | DEL |                |         |         |        |     |      |
+//  F9 | F10 | F11 | F12 |     |                |   ,,    |   ,,    |        |     |      |
+//         |      |     |      |     |      |           |         |      |
         fn {
            bindings = <
             &kp F5 &kp F6 &kp F7 &kp F8 &none &none &none &none &none &none
             &kp F1 &kp F2 &kp F3 &kp F4 &kp DEL &none &none &none &none &none
             &kp F9 &kp F10 &kp F11 &kp F12 &none &trans &trans &none &none &none &none &none
+	    &none &none &none &none &none &none 
+            >;
+        };
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |        |     |      |
+//     |     |     |     |     |                |   P0    |    P1   |   P2   |  P3 |  P4  |
+//     |     |     |     |     |                |         |         |        |     |      |
+//         |      |     |  CLR |     |      |           |         |      |
+        bt {
+           bindings = <
+            &none &none &none &none &none &none &none &none &none &none
+            &none &none &none &none &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+            &none &none &none &none &bt BT_CLR &none &none &none &none &none
 	    &none &none &none &none &none &none 
             >;
         };

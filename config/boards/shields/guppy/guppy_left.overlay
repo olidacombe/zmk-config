@@ -11,6 +11,7 @@
         ;
 };
 
-&left_encoder {
-    status = "okay";
-};
+// we don't need this one at the moment
+// &left_encoder {
+//     status = "okay";
+// };
