@@ -36,11 +36,11 @@
 //  '    |  ,  |  .  |  P/Nav  |  Y  |           |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
 // A/Sym |  O/Ctrl  |  E/Alt  |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
 // Esc/Lsft|  Q  |  J  |  K  |  X  |           |  B  |  M  |  W  |    V    |Z/Rsft|
-// |    | SPC/Num | Bspc |  ( Mute )       ( Caps )  | Tab | Ent |     |
+// |    | SPC/Num | Bspc |  ( Mute )       ( Play/Pause )  | Tab | Ent |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &lt SYMBOLS A &hm LCTRL O &hm LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hm RALT T &hm RCTRL N &lt SYMBOLS S
-            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp C_MUTE &kp CAPS &kp B &kp M &kp W &kp V &hm RSHIFT Z
+            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp C_MUTE &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_VOL_DN C_VOL_UP>;
