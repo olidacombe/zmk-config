@@ -17,3 +17,5 @@ include:
     shield: guppy_left
   - board: nice_nano_v2
     shield: guppy_right
+  - board: nice_nano_v2
+    shield: settings_reset

@@ -1,4 +1,3 @@
-
 #include "guppy.dtsi"
 
 &default_transform {
@@ -15,6 +14,7 @@
         ;
 };
 
-&right_encoder {
-	status = "okay";
-};
+// we don't need this one at the moment
+// &right_encoder {
+// 	status = "okay";
+// };
