@@ -50,11 +50,11 @@
 //  !  |  @  |  {  |  }  |     |                |         |    <    |    >   |  *  |   #  |
 //  ^  |  $  |  (  |  )  |  \  |                |    &    |    =    |    -   |  :  |   ;  |
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
-//         |  ,,  | //\ | |/&  |  ,,   |   ,,   |    `    |    "    |   ,,   |
+//         |  ,,  | //\ | |/&  |  ,,   |  sarcasm  |    `    |    "    |   ,,   |
            bindings = <
             &kp EXCL &hm LS(LCTRL) AT &hm LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hm RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm HASH LA(N3)
             &kp CARET &hm LCTRL DOLLAR &hm LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hm RALT MINUS &hm RCTRL COLON &kp SEMICOLON
-            &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &trans &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
+            &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &sarcasm &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
             &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
            >;
             sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP &inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
