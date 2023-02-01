@@ -43,27 +43,34 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(3,1)         RC(3,8) RC(2,5) RC(2,6) 
             ;
     };
 
-    left_encoder: encoder_left {
+    left_encoder_a: encoder_left_a {
             compatible = "alps,ec11";
-            label = "LEFT_ENCODER";
-            a-gpios = <&pro_micro_d 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-            b-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-            resolution = <4>;
+            label = "LEFT_ENCODER_A";
+            a-gpios = <&pro_micro_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            b-gpios = <&pro_micro_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            resolution = <2>;
             status = "disabled";
         };
-
+    left_encoder_b: encoder_left_b {
+            compatible = "alps,ec11";
+            label = "LEFT_ENCODER_B";
+            a-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            b-gpios = <&pro_micro_d 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+            resolution = <2>;
+            status = "disabled";
+        };
     right_encoder: encoder_right {
             compatible = "alps,ec11";
             label = "RIGHT_ENCODER";
             a-gpios = <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
             b-gpios = <&pro_micro_d 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-            resolution = <4>;
+            resolution = <2>;
             status = "disabled";
     };
 
     sensors {
             compatible = "zmk,keymap-sensors";
-            sensors = <&left_encoder &right_encoder>;
+            sensors = <&left_encoder_a &left_encoder_b &right_encoder>;
     };
 
 };
