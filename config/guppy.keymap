@@ -50,7 +50,7 @@
 //  !  |  @  |  {  |  }  |     |                |         |    <    |    >   |  *  |   #  |
 //  ^  |  $  |  (  |  )  |  \  |                |    &    |    =    |    -   |  :  |   ;  |
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
-//         |  ,,  | //\ | |/&  |  ,,   |  sarcasm  |    `    |    "    |   ,,   |
+//         |  ,,  | //\ | |/&  |  ,,   |  saRcASM  |    `    |    "    |   ,,   |
            bindings = <
             &kp EXCL &hm LS(LCTRL) AT &hm LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hm RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm HASH LA(N3)
             &kp CARET &hm LCTRL DOLLAR &hm LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hm RALT MINUS &hm RCTRL COLON &kp SEMICOLON
