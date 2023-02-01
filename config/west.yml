@@ -2,10 +2,32 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: od
+      url-base: https://github.com/olidacombe
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      # +------+
+      # | orig |
+      # +------+
+      # remote: zmkfirmware
+      # revision: main
+      #       ,
+      #   /\^/`\
+      #  | \/   |
+      #  | |    |                               
+      #  \ \    /                             _ _
+      #   '\\//'                            _{ ' }_
+      #     ||     My zmk branch           { `.!.` }
+      #     ||     with stuff like sarcasm ',_/Y\_,'
+      #     ||  ,                            {_,_}
+      # |\  ||  |\                             |
+      # | | ||  | |                          (\|  /)
+      # | | || / /                            \| //
+      #  \ \||/ /                              |//
+      #   `\\//`   \   \./    \\   \./    \ \\ |/ /
+      #  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      remote: od
+      revision: od
       import: app/west.yml
   self:
     path: config

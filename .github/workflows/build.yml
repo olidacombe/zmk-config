@@ -2,4 +2,4 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: olidacombe/zmk/.github/workflows/build-user-config.yml@od
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
