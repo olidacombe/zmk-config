@@ -36,28 +36,29 @@
 //  '    |  ,  |  .  |  P/Nav  |  Y  |           |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
 // A/Sym |  O/Ctrl  |  E/Alt  |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
 // Esc/Lsft|  Q  |  J  |  K  |  X  |           |  B  |  M  |  W  |    V    |Z/Rsft|
-// |    | SPC/Num | Bspc |  ( Mute )       ( Play/Pause )  | Tab | Ent |     |
+// | Mute | SPC/Num | Bspc |  ( Caps )       ( Play/Pause )  | Tab | Ent |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &lt SYMBOLS A &hm LCTRL O &hm LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hm RALT T &hm RCTRL N &lt SYMBOLS S
-            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp C_MUTE &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &none &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
+            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
+            &kp C_MUTE &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            // TODO: I would __love__ to do `&kp BSPC &key_repeat` instead for the latter here
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp BSPC DOT>;
         };
         symbols {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  !  |  @  |  {  |  }  |     |                |         |    <    |    >   |  *  |   #  |
 //  ^  |  $  |  (  |  )  |  \  |                |    &    |    =    |    -   |  :  |   ;  |
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
-//         |  ,,  | //\ | |/&  |  ,,   |  saRcASM  |    `    |    "    |   ,,   |
+//         |  ,,  | //\ | |/&  |  ,,   |  sarcasm  |    `    |    "    |   ,,   |
            bindings = <
             &kp EXCL &hm LS(LCTRL) AT &hm LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hm RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm HASH LA(N3)
             &kp CARET &hm LCTRL DOLLAR &hm LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hm RALT MINUS &hm RCTRL COLON &kp SEMICOLON
             &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &sarcasm &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
             &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
            >;
-            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP &inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
+            sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC &inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
 
         };
         numbers {
@@ -98,6 +99,7 @@
             &kp F9 &kp F10 &kp F11 &kp F12 &none &trans &trans &none &none &none &none &none
 	    &none &none &none &none &none &none 
             >;
+            sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC>;
         };
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //     |     |     |     |     |                |         |         |        |     |      |
