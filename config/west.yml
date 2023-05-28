@@ -27,7 +27,8 @@ manifest:
       #   `\\//`   \   \./    \\   \./    \ \\ |/ /
       #  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       remote: od
-      revision: od
+      # revision: od
+      revision: main
       import: app/west.yml
   self:
     path: config
