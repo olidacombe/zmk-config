@@ -68,7 +68,7 @@
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
 //         |  ,,  | //\ | |/&  |  ,,   |    |    `    |    "    |   ,,   |
            bindings = <
-            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm HASH NUHS
+            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm LA(N3) HASH
             &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt RALT MINUS &hm RCTRL COLON &kp SEMICOLON
             &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &none &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
             &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
