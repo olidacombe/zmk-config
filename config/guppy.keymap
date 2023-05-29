@@ -68,7 +68,7 @@
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
 //         |  ,,  | //\ | |/&  |  ,,   |    |    `    |    "    |   ,,   |
            bindings = <
-            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm NUHS POUND
+            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm HASH NUHS
             &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt RALT MINUS &hm RCTRL COLON &kp SEMICOLON
             &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &none &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
             &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
@@ -79,12 +79,12 @@
         numbers {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //     ⁄  |  ™  |  ”  |  ’  |   |            |         |    4    |    5   |  6  |   7  |
-//    Ÿ   |  “  |  ‘  |  ‚  |   |            |   DEL   |    0    |    1   | 2/: |   3  |
+//    ›   |  “  |  ‘  |  «  |   |            |   DEL   |    0    |    1   | 2/: |   3  |
 //        | vol- | vol+ |   |   |            |         |    8    |    9   | +/- | *//  |
 //         |      |     |      |     |      |    =    |    .    |      |
            bindings = <
 	    &kp LA(EXCL) &kp LA(AT) &kp LA(LBRC) &kp LA(RBRC) &none &none &kp N4 &kp N5 &kp N6 &kp N7
-	    &kp LA(TILDE) &kp LA(GRAVE) &kp LA(LBKT) &kp LA(RBKT) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
+	    &kp LA(DOLLAR) &kp LA(LPAR) &kp LA(BACKSLASH) &kp LA(LBKT) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
 	    &none &none &kp C_VOL_DN &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
 	    &none &none &none &kp EQL &kp DOT &none
             >;
