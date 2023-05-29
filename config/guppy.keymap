@@ -78,13 +78,13 @@
         };
         numbers {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//     | int1| int2| int3| int4|                |         |    4    |    5   |  6  |   7  |
-//     |lang1|lang2|lang3|lang4|                |   DEL   |    0    |    1   | 2/: |   3  |
-//     |     | vol- | vol+ |   |                |         |    8    |    9   | +/- | *//  |
+//     ⁄  |  ™  |  ”  |  ’  |   |            |         |    4    |    5   |  6  |   7  |
+//    Ÿ   |  “  |  ‘  |  ‚  |   |            |   DEL   |    0    |    1   | 2/: |   3  |
+//        | vol- | vol+ |   |   |            |         |    8    |    9   | +/- | *//  |
 //         |      |     |      |     |      |    =    |    .    |      |
            bindings = <
-	    &kp INT1 &kp INT2 &kp INT3 &kp INT4 &none &none &kp N4 &kp N5 &kp N6 &kp N7
-	    &kp LANG1 &kp LANG2 &kp LANG3 &kp LANG4 &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
+	    &kp LA(EXCL) &kp LA(AT) &kp LA(LBRC) &kp LA(RBRC) &none &none &kp N4 &kp N5 &kp N6 &kp N7
+	    &kp LA(TILDE) &kp LA(GRAVE) &kp LA(LBKT) &kp LA(RBKT) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
 	    &none &none &kp C_VOL_DN &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
 	    &none &none &none &kp EQL &kp DOT &none
             >;
