@@ -78,14 +78,14 @@
         };
         numbers {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//     ⁄  |  ™  |  ”  |  ’  |   |            |         |    4    |    5   |  6  |   7  |
-//    ›   |  “  |  ‘  |  «  |   |            |   DEL   |    0    |    1   | 2/: |   3  |
-//        | vol- | vol+ |   |   |            |         |    8    |    9   | +/- | *//  |
+//   s-f5  |  s-f6  |  s-f7 |  s-f8  |   |            |         |    4    |    5   |  6  |   7  |
+//    s-f1   |  s-f2 |  s-f3 | s-f4 |   |             |   DEL   |    0    |    1   | 2/: |   3  |
+//     s-f9   | s-f10 | s-f11 | s-f12 |   |           |         |    8    |    9   | +/- | *//  |
 //         |      |     |      |     |      |    =    |    .    |      |
            bindings = <
-	    &kp LA(EXCL) &kp LA(AT) &kp LA(LBRC) &kp LA(RBRC) &none &none &kp N4 &kp N5 &kp N6 &kp N7
-	    &kp LA(DOLLAR) &kp LA(LPAR) &kp LA(BACKSLASH) &kp LA(LBKT) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
-	    &none &none &kp C_VOL_DN &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
+	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &kp N4 &kp N5 &kp N6 &kp N7
+	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
+	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
 	    &none &none &none &kp EQL &kp DOT &none
             >;
         };
