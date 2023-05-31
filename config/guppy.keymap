@@ -21,7 +21,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <100>;
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
@@ -30,10 +30,19 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_PREFER_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <100>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+        };
+        blt: balanced_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BALANCED_LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
         };
         repeat_encoder: repeat_encoder {
             compatible = "zmk,behavior-sensor-rotate";
@@ -54,7 +63,7 @@
 // | Mute | SPC/Num | Bspc |  ( Caps )                             ( Play/Pause )  | Tab | Ent |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
-            &lt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt RALT T &hm RCTRL N &lt SYMBOLS S
+            &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt RALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &kp C_MUTE &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
