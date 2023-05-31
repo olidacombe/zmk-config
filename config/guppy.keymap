@@ -48,10 +48,10 @@
 
         default {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//  '    |  ,  |  .  |  P/Nav  |  Y  |           |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
-// A/Sym |  O/Ctrl  |  E/Alt  |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
-// Esc/Lsft|  Q  |  J  |  K  |  X  |           |  B  |  M  |  W  |    V    |Z/Rsft|
-// | Mute | SPC/Num | Bspc |  ( Caps )       ( Play/Pause )  | Tab | Ent |     |
+//  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
+// A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
+// Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
+// | Mute | SPC/Num | Bspc |  ( Caps )                             ( Play/Pause )  | Tab | Ent |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &lt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt RALT T &hm RCTRL N &lt SYMBOLS S
@@ -85,7 +85,7 @@
            bindings = <
 	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &kp N4 &kp N5 &kp N6 &kp N7
 	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
-	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &kp C_VOL_UP &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
+	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
 	    &none &none &none &kp EQL &kp DOT &none
             >;
         };
