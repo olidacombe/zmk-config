@@ -16,7 +16,7 @@
 #define BLUETOOTH 5
 
 // tapping-term-ms
-#define TT 100
+#define TT 140
 
 / {
     behaviors {
