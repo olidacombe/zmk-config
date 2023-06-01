@@ -15,13 +15,16 @@
 #define FUNCTION 4
 #define BLUETOOTH 5
 
+// tapping-term-ms
+#define TT 100
+
 / {
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <TT>;
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
@@ -30,7 +33,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_PREFER_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <TT>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -39,7 +42,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "BALANCED_LAYER_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <TT>;
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
