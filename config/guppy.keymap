@@ -65,10 +65,10 @@
 // Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
 // | Mute | SPC/Num | Bspc |  ( Caps )                             ( Play/Pause )  | Tab | Ent |     |
            bindings = <
-            &lt BLUETOOTH APOS &kp COMMA &kp DOT &lt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
+            &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt RALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &kp C_MUTE &lt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
+            &kp C_MUTE &blt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
             // TODO: I would __love__ to do `&kp BSPC &key_repeat` instead for the latter here
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &repeat_encoder>;
