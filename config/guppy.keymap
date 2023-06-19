@@ -66,7 +66,7 @@
 // | Mute | SPC/Num | Bspc |  ( Caps )                             ( Play/Pause )  | Tab | Ent |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
-            &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt RALT T &hm RCTRL N &blt SYMBOLS S
+            &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
             &kp C_MUTE &blt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
             >;
@@ -80,8 +80,8 @@
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
 //         |  ,,  | //\ | |/&  |  ,,   |    |    `    |    "    |   ,,   |
            bindings = <
-            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(RALT) GT &hm RS(RCTRL) ASTERISK &hm LA(N3) HASH
-            &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt RALT MINUS &hm RCTRL COLON &kp SEMICOLON
+            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(LALT) GT &hm RS(RCTRL) ASTERISK &hm LA(N3) HASH
+            &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt LALT MINUS &hm RCTRL COLON &kp SEMICOLON
             &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &none &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
             &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
            >;
