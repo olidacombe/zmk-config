@@ -63,14 +63,13 @@
 //  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
 // A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
 // Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
-// | Mute | SPC/Num | Bspc |  ( Caps )                             ( Play/Pause )  | Tab | Ent |     |
+// | Mute | Bspc | SPC/Num |  ( Caps )                             ( Play/Pause )  | Ent | Tab |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp CAPS &kp C_PP &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &kp C_MUTE &blt NUMBERS SPACE &kp BSPC &kp TAB &kp RET &none
+            &kp C_MUTE &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB &none
             >;
-            // TODO: I would __love__ to do `&kp BSPC &key_repeat` instead for the latter here
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &repeat_encoder>;
         };
         symbols {
@@ -78,27 +77,27 @@
 //  !  |  @  |  {  |  }  |     |                |         |    <    |    >   |  *  |   #  |
 //  ^  |  $  |  (  |  )  |  \  |                |    &    |    =    |    -   |  :  |   ;  |
 //  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
-//         |  ,,  | //\ | |/&  |  ,,   |    |    `    |    "    |   ,,   |
+//         |  ,,  | |/&  | //\ |  ,,   |    |    "    |    `    |   ,,   |
            bindings = <
             &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(LALT) GT &hm RS(RCTRL) ASTERISK &hm LA(N3) HASH
             &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt LALT MINUS &hm RCTRL COLON &kp SEMICOLON
             &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &trans &none &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
-            &trans &mt BACKSLASH SLASH &mt AMPS PIPE &kp GRAVE &kp DQT &trans
+            &trans &mt AMPS PIPE &mt BACKSLASH SLASH &kp DQT &kp GRAVE &trans
            >;
             sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC &inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
 
         };
         numbers {
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//   s-f5  |  s-f6  |  s-f7 |  s-f8  |   |            |         |    4    |    5   |  6  |   7  |
-//    s-f1   |  s-f2 |  s-f3 | s-f4 |   |             |   DEL   |    0    |    1   | 2/: |   3  |
-//     s-f9   | s-f10 | s-f11 | s-f12 |   |           |         |    8    |    9   | +/- | *//  |
-//         |      |     |      |     |      |    =    |    .    |      |
+//   s-f5  |  s-f6  |  s-f7 |  s-f8  |   |            |         |    4/<    |    5/>   |  6/*  |   7//  |
+//    s-f1   |  s-f2 |  s-f3 | s-f4 |   |             |   DEL   |    0/=    |    1/-   | 2/: |   3/;  |
+//     s-f9   | s-f10 | s-f11 | s-f12 |   |           |         |    8/+    |    9/_   | +/- | *//  |
+//         |      |     |      |     |      |    .    |    =    |      |
            bindings = <
-	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &kp N4 &kp N5 &kp N6 &kp N7
-	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &kp N0 &kp N1 &mt COLON N2 &kp N3
-	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &trans &trans &none &kp N8 &kp N9 &mt MINUS PLUS &mt SLASH ASTERISK
-	    &none &none &none &kp EQL &kp DOT &none
+	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &mt LT N4 &mt GT N5 &mt ASTERISK N6 &mt SLASH N7
+	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &mt EQL N0 &mt MINUS N1 &mt COLON N2 &mt SEMICOLON N3
+	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &trans &trans &none &mt PLUS N8 &mt UNDERSCORE N9 &mt MINUS PLUS &mt SLASH ASTERISK
+	    &none &none &none &kp DOT &kp EQL &none
             >;
         };
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
