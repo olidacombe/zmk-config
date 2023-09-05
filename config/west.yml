@@ -8,7 +8,7 @@ manifest:
       url-base: https://github.com/victorlucachi
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: void
       revision: pmw3610-aml
       import: app/west.yml
     # - name: zmk
