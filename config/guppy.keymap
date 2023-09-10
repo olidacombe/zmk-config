@@ -94,9 +94,9 @@
 //     s-f9   | s-f10 | s-f11 | s-f12 |   |           |         |    8/+    |    9/_   | +/- | *//  |
 //         |      |     |      |     |      |    .    |    =    |      |
            bindings = <
-	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &mt LT N4 &mt GT N5 &mt ASTERISK N6 &mt SLASH N7
-	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &mt EQL N0 &mt MINUS N1 &mt COLON N2 &mt SEMICOLON N3
-	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &trans &trans &none &mt PLUS N8 &mt UNDERSCORE N9 &mt MINUS PLUS &mt SLASH ASTERISK
+	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &hmpt LT N4 &hmpt GT N5 &hmpt ASTERISK N6 &hmpt SLASH N7
+	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &hmpt EQL N0 &hmpt MINUS N1 &hmpt COLON N2 &hmpt SEMICOLON N3
+	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &trans &trans &none &hmpt PLUS N8 &hmpt UNDERSCORE N9 &hmpt MINUS PLUS &hmpt SLASH ASTERISK
 	    &none &none &none &kp DOT &kp EQL &none
             >;
         };
