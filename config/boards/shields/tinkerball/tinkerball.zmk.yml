@@ -1,0 +1,12 @@
+file_format: "1"
+id: tinkerball
+name: Tinkerball
+type: shield
+url: https://github.com/Bastardkb/Tinkerball/
+requires: [pro_micro]
+features:
+  - keys
+  - pointer
+siblings:
+  - tinkerball_left
+  - tinkerball_right

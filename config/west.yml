@@ -4,31 +4,12 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: od
       url-base: https://github.com/olidacombe
+    - name: void
+      url-base: https://github.com/victorlucachi
   projects:
     - name: zmk
-      # +------+
-      # | orig |
-      # +------+
-      # remote: zmkfirmware
-      # revision: main
-      #       ,
-      #   /\^/`\
-      #  | \/   |
-      #  | |    |                               
-      #  \ \    /                             _ _
-      #   '\\//'                            _{ ' }_
-      #     ||     My zmk branch           { `.!.` }
-      #     ||     with stuff like sarcasm ',_/Y\_,'
-      #     ||  ,                            {_,_}
-      # |\  ||  |\                             |
-      # | | ||  | |                          (\|  /)
-      # | | || / /                            \| //
-      #  \ \||/ /                              |//
-      #   `\\//`   \   \./    \\   \./    \ \\ |/ /
-      #  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      remote: od
-      # revision: od
-      revision: main
+      remote: olidacombe
+      revision: void_pmw3610-aml
       import: app/west.yml
   self:
     path: config
