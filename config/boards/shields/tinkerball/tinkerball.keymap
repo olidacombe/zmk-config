@@ -18,6 +18,7 @@
                                 &kp LCTRL   &mo 1   &kp SPACE           &kp RET   &mo 2
             >;
             trackball-bindings = <&tmv_coarse>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         Lower {
@@ -29,6 +30,7 @@
                                             &kp LGUI    &trans      &kp SPACE           &kp RET  &kp RCTRL
             >;
             trackball-bindings = <&tmv_fine>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         Raise {
@@ -40,6 +42,7 @@
                                         &kp LGUI    &kp LEFT_ALT    &kp SPACE           &kp RET     &trans
             >;
             trackball-bindings = <&tsl_fine>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
