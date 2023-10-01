@@ -8,7 +8,7 @@ manifest:
       url-base: https://github.com/victorlucachi
   projects:
     - name: zmk
-      remote: olidacombe
+      remote: od
       revision: void_pmw3610-aml
       import: app/west.yml
   self:
