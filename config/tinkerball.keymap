@@ -4,6 +4,16 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define SYMBOLS 1
+#define NUMBERS 2
+#define NAV 3
+#define FUNCTION 4
+#define BLUETOOTH 5
+#define MOUSE 6
+
+// tapping-term-ms
+#define TT 160
+
 / {
   chosen {
     zmk,matrix_transform = &five_column_transform;
@@ -11,52 +21,141 @@
 };
 
 / {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <TT>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+        hmpt: homerow_mods_prefer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_PREFER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <TT>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        blt: balanced_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BALANCED_LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <TT>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
+        };
+        repeat_encoder: repeat_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "REPEAT_ENCODER";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp BSPC>, <&key_repeat>;
+        };
+    };
 
   keymap {
     compatible = "zmk,keymap";
 
-        Base {
-            label = "Base";
-            bindings = <
-    &kp Q   &kp W   &kp E       &kp R   &kp T                 &kp Y   &kp U      &kp I    &kp O     &kp P
-    &kp A   &kp S   &kp D       &kp F   &kp G                 &kp H   &kp J      &kp K    &kp L  &kp SEMI
-    &kp Z   &kp X   &kp C       &kp V   &kp B                 &kp N   &kp M  &kp COMMA  &kp DOT  &kp FSLH
-                                &kp N1   &kp N2   &kp N3           &kp N5   &kp N6
+        default {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
+// A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
+// Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
+// | Mute | Bspc | SPC/Num |                                                       | Ent | Tab |     |
+           bindings = <
+            &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
+            &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
+            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHIFT Z
+            &kp C_MUTE &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             trackball-bindings = <&tmv_coarse>;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        Lower {
-            label = "Lower";
-            bindings = <
-    &kp K_PP    &kp UP      &kp N1      &kp N2      &kp N3               &kp N7     &kp N8    &kp N9     &kp N0  &kp HOME
-    &kp LEFT    &kp DOWN    &kp RIGHT   &kp N4      &kp N5               &kp N4     &kp N5    &kp N6  &kp RIGHT    &trans
-    &trans      &trans      &trans      &kp MINUS   &kp PLUS             &kp N1     &kp N2    &kp N3    &kp DOT    &trans
-                                            &kp LGUI    &trans      &kp SPACE           &kp RET  &kp RCTRL
-            >;
+        symbols {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  !  |  @  |  {  |  }  |     |                |         |    <    |    >   |  *  |   #  |
+//  ^  |  $  |  (  |  )  |  \  |                |    &    |    =    |    -   |  :  |   ;  |
+//  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
+//         |  ,,  | |/&  | //\ |                |    "    |    `    |   ,,   |
+           bindings = <
+            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(LALT) GT &hm RS(RCTRL) ASTERISK &hm LA(N3) HASH
+            &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt LALT MINUS &hm RCTRL COLON &kp SEMICOLON
+            &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
+            &trans &mt AMPS PIPE &mt BACKSLASH SLASH &kp DQT &kp GRAVE
+           >;
+            sensor-bindings = <&inc_dec_kp K_SCROLL_DOWN K_SCROLL_UP>;
             trackball-bindings = <&tmv_fine>;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        Raise {
-            label = "Raise";
-            bindings = <
-    &kp EXCL        &kp AT      &kp HASH    &kp DLLR        &kp PRCNT         &kp CARET   &kp AMPS  &kp KP_MULTIPLY  &kp LPAR  &kp RPAR
-    &bt BT_CLR      &bt BT_PRV  &bt BT_NXT  &bt BT_SEL 0    &to 3             &kp UNDER  &kp EQUAL         &kp LBKT  &kp RBKT  &kp BSLH
-    &out OUT_TOG    &trans      &trans      &trans          &trans            &kp MINUS   &kp PLUS         &kp LBRC  &kp RBRC  &kp PIPE
-                                        &kp LGUI    &kp LEFT_ALT    &kp SPACE           &kp RET     &trans
+        numbers {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//   s-f5  |  s-f6  |  s-f7 |  s-f8  |   |            |         |    4/<    |    5/>   |  6/*  |   7//  |
+//    s-f1   |  s-f2 |  s-f3 | s-f4 |   |             |   DEL   |    0/=    |    1/-   | 2/: |   3/;  |
+//     s-f9   | s-f10 | s-f11 | s-f12 |   |           |         |    8/+    |    9/_   | +/- | *//  |
+//         |      |     |      |     |      |    .    |    =    |      |
+           bindings = <
+	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &hmpt LT N4 &hmpt GT N5 &hmpt ASTERISK N6 &hmpt SLASH N7
+	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &hmpt EQL N0 &hmpt MINUS N1 &hmpt COLON N2 &hmpt SEMICOLON N3
+	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &none &hmpt PLUS N8 &hmpt UNDERSCORE N9 &hmpt MINUS PLUS &hmpt SLASH ASTERISK
+	    &none &none &none &kp DOT &kp EQL
             >;
             trackball-bindings = <&tsl_fine>;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        Mouse {
+        nav {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |    ^   |     |      |
+//     |     |     |     |     |                |         |    <    |    v   |  >  |      |
+//     |     |     |     |     |                |         |   HOME  |        | END |      |
+//         |      |     |      |     |      |    PgDN   |   PgUP  |      |
+           bindings = <
+	    &none &none &none &none &none &none &none &kp UP &none &none
+	    &none &none &none &none &none &none &kp LEFT &kp DOWN &kp RIGHT &none
+	    &none &none &none &none &none &none &kp HOME &none &kp END &none
+	    &none &none &none &kp PG_DN &kp PG_UP
+            >;
+        };
+
+        fn {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  F5 |  F6 | F7  | F8  |     |                |         |         |        |     |      |
+//  F1 |  F2 | F3  | F4  | DEL |                |         |         |        |     |      |
+//  F9 | F10 | F11 | F12 |     |                |   ,,    |   ,,    |        |     |      |
+//         |      |     |      |     |      |           |         |      |
+           bindings = <
+            &kp F5 &kp F6 &kp F7 &kp F8 &none &none &none &none &none &none
+            &kp F1 &kp F2 &kp F3 &kp F4 &kp DEL &none &none &none &none &none
+            &kp F9 &kp F10 &kp F11 &kp F12 &none &none &none &none &none &none
+	    &none &none &none &none &none
+            >;
+            sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC>;
+        };
+
+        bt {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |        |     |      |
+//     |     |     |     |     |                |   P0    |    P1   |   P2   |  P3 |  P4  |
+//     |     |     |     |     |                |         |         |        |     |      |
+//         |      |     |  CLR |     |      |           |         |      |
+           bindings = <
+            &none &none &none &none &none &none &none &none &none &none
+            &none &none &none &none &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+            &none &none &none &none &none &none &none &none &none &none
+	    &none &none &bt BT_CLR &none &none &none 
+            >;
+        };
+
+        mouse {
             bindings = <
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-                           &mkp LCLK  &trans  &mkp RCLK    &trans  &trans
+                           &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
             >;
             trackball-bindings = <&tmv_fine>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
