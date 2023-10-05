@@ -10,7 +10,7 @@
 #define FUNCTION 4
 #define BLUETOOTH 5
 #define MOUSE 6
-#define SCROLL 7
+#define SCRL 7
 #define MEDIA 8
 
 // tapping-term-ms
@@ -51,6 +51,14 @@
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
         };
+        tt: toggle_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TOGGLE_LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&tog>;
+        };
         repeat_encoder: repeat_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             label = "REPEAT_ENCODER";
@@ -63,11 +71,11 @@
         compatible = "zmk,conditional-layers";
         nav_ball_scroll {
             if-layers = <MOUSE NAV>;
-            then-layer = <SCROLL>;
+            then-layer = <SCRL>;
         };
         num_ball_scroll {
             if-layers = <MOUSE NUMBERS>;
-            then-layer = <SCROLL>;
+            then-layer = <SCRL>;
         };
     };
 
@@ -97,12 +105,12 @@
 //  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
 // A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
 // Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
-// | Mute | Bspc | SPC/Num |                                                       | Ent | Tab |     |
+// | Media/Play-Pause | Bspc | SPC/Num |                                                       | Ent | Tab |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &tog MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
+            &tt C_PP MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
             >;
             sensor-bindings = <&inc_dec_kp BSPC BSPC>;
         };
@@ -135,7 +143,7 @@
 	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &none &hmpt PLUS N8 &hmpt UNDERSCORE N9 &hmpt MINUS PLUS &hmpt SLASH ASTERISK
 	    &none &none &none &kp DOT &kp EQL
             >;
-            trackball-bindings = <&tsl>;
+            trackball-bindings = <&tsl_fine>;
         };
 
         nav {
@@ -150,7 +158,7 @@
 	    &none &none &none &none &none &none &kp HOME &none &kp END &none
 	    &none &none &none &kp PG_DN &kp PG_UP
             >;
-            trackball-bindings = <&tsl>;
+            trackball-bindings = <&tsl_fine>;
         };
 
         fn {
@@ -166,7 +174,7 @@
 	    &none &none &none &none &none
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC>;
-            trackball-bindings = <&tsl>;
+            trackball-bindings = <&tsl_fine>;
         };
 
         bt {
@@ -201,17 +209,16 @@
     &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
                            &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
             >;
-            trackball-bindings = <&tsl>;
+            trackball-bindings = <&tsl_fine>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
-
 
         medi_jah {
             bindings = <
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
-                           &tog MEDIA  &trans &trans    &trans  &trans
+                           &tt C_PP MEDIA &trans &trans    &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
