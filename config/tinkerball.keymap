@@ -10,6 +10,7 @@
 #define FUNCTION 4
 #define BLUETOOTH 5
 #define MOUSE 6
+#define SCROLL 7
 
 // tapping-term-ms
 #define TT 160
@@ -54,6 +55,18 @@
             label = "REPEAT_ENCODER";
             #sensor-binding-cells = <0>;
             bindings = <&kp BSPC>, <&key_repeat>;
+        };
+    };
+    
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        nav_ball_scroll {
+            if-layers = <MOUSE NAV>;
+            then-layer = <SCROLL>;
+        };
+        num_ball_scroll {
+            if-layers = <MOUSE NUMBERS>;
+            then-layer = <SCROLL>;
         };
     };
 
@@ -134,6 +147,7 @@
 	    &none &none &none &none &none
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC>;
+            trackball-bindings = <&tsl>;
         };
 
         bt {
@@ -157,7 +171,18 @@
     &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
                            &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
             >;
-            trackball-bindings = <&tmv_fine>;
+            trackball-bindings = <&tmv>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        scrolly_moly {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
+                           &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
+            >;
+            trackball-bindings = <&tsl>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
