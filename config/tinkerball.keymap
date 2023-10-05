@@ -86,7 +86,6 @@
             &kp C_MUTE &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-            trackball-bindings = <&tmv_coarse>;
         };
 
         symbols {
@@ -117,7 +116,6 @@
 	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &none &hmpt PLUS N8 &hmpt UNDERSCORE N9 &hmpt MINUS PLUS &hmpt SLASH ASTERISK
 	    &none &none &none &kp DOT &kp EQL
             >;
-            trackball-bindings = <&tsl_fine>;
         };
 
         nav {
