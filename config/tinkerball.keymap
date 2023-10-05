@@ -11,6 +11,7 @@
 #define BLUETOOTH 5
 #define MOUSE 6
 #define SCROLL 7
+#define MEDIA 8
 
 // tapping-term-ms
 #define TT 160
@@ -83,9 +84,9 @@
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &kp C_MUTE &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
+            &tog MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp BSPC BSPC>;
         };
 
         symbols {
@@ -183,6 +184,17 @@
                            &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
             >;
             trackball-bindings = <&tsl>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+
+        medi_jah {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
+                           &tog MEDIA  &trans &trans    &trans  &trans
+            >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
