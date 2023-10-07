@@ -11,7 +11,8 @@
 #define BLUETOOTH 5
 #define MOUSE 6
 #define SCRL 7
-#define MEDIA 8
+#define BIRO 8
+#define MEDIA 9
 
 // tapping-term-ms
 #define TT 160
@@ -65,16 +66,35 @@
             #sensor-binding-cells = <0>;
             bindings = <&kp BSPC>, <&key_repeat>;
         };
+        tsl: behavior_trackball_scroll {
+			compatible = "zmk,behavior-point-device-incremental";
+			label = "TRACKBALL_SCROLL";
+			#trackball-binding-cells = <0>;
+            mode = "scroll-mode";
+            flavor = "default";
+            scale_mode = "dividor";
+            scale_factor = <4>;
+            smoothing;
+		};
+        tkp_fast: behavior_trackball_key_press {
+            compatible = "zmk,behavior-point-device-directional";
+            label = "TRACKBALL_KEY_PRESS";
+            #trackball-binding-cells = <4>;
+            mode = "distance-mode";
+            flavor = "2-dim";
+            step_size = <50>;
+        };
     };
+
     
     conditional_layers {
         compatible = "zmk,conditional-layers";
         nav_ball_scroll {
             if-layers = <MOUSE NAV>;
-            then-layer = <SCRL>;
+            then-layer = <BIRO>;
         };
         num_ball_scroll {
-            if-layers = <MOUSE NUMBERS>;
+            if-layers = <MOUSE SYMBOLS>;
             then-layer = <SCRL>;
         };
     };
@@ -206,11 +226,21 @@
             bindings = <
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-    &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
                            &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
             >;
             trackball-bindings = <&tsl>;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        // ball point
+        biro {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &trans &trans    &trans  &trans
+            >;
+            trackball-bindings = <&tkp_fast LEFT RIGHT UP DOWN>;
         };
 
         medi_jah {
