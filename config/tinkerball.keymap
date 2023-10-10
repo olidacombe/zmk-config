@@ -88,19 +88,18 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_LEFTCLICK";
             #binding-cells = <0>;
-            bindings = <&trans>, <&mkp LCLK>;
+            bindings = <&kp BSPC>, <&mkp LCLK>;
             mods = <(MOD_LSFT)>;
         };
         src: shift_rightclick {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_RIGHTCLICK";
             #binding-cells = <0>;
-            bindings = <&trans>, <&mkp RCLK>;
+            bindings = <&blt NUMBERS SPACE>, <&mkp RCLK>;
             mods = <(MOD_LSFT)>;
         };
     };
 
-    
     conditional_layers {
         compatible = "zmk,conditional-layers";
         nav_ball_scroll {
@@ -139,12 +138,12 @@
 //  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
 // A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
 // Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
-// | Media/Play-Pause | Bspc | SPC/Num |                                                       | Ent | Tab |     |
+// | Media/Play-Pause | Bspc/LC | SPC/Num/RC |                                                       | Ent | Tab |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &tt C_PP MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
+            &tt C_PP MEDIA &slc &src &kp RET &kp TAB
             >;
             sensor-bindings = <&inc_dec_kp BSPC BSPC>;
         };
@@ -230,7 +229,7 @@
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-                           &trans  &slc &src        &trans  &trans
+                           &trans  &trans &trans    &trans  &trans
             >;
             trackball-bindings = <&tmv>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
