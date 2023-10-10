@@ -84,6 +84,20 @@
             flavor = "2-dim";
             step_size = <50>;
         };
+        slc: shift_leftclick {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_LEFTCLICK";
+            #binding-cells = <0>;
+            bindings = <&trans>, <&mkp LCLK>;
+            mods = <(MOD_LSFT)>;
+        };
+        src: shift_rightclick {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_RIGHTCLICK";
+            #binding-cells = <0>;
+            bindings = <&trans>, <&mkp RCLK>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     
@@ -215,8 +229,8 @@
             bindings = <
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-    &trans  &trans     &trans  &trans     &trans    &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
-                           &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &slc &src        &trans  &trans
             >;
             trackball-bindings = <&tmv>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -227,7 +241,7 @@
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-                           &trans  &mkp LCLK  &mkp RCLK    &trans  &trans
+                           &trans  &slc &src        &trans  &trans
             >;
             trackball-bindings = <&tsl>;
         };
