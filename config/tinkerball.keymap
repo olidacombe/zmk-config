@@ -10,9 +10,10 @@
 #define FUNCTION 4
 #define BLUETOOTH 5
 #define MOUSE 6
-#define SCRL 7
-#define BIRO 8
-#define MEDIA 9
+#define CLICK 7
+#define SCRL 8
+#define BIRO 9
+#define MEDIA 10
 
 // tapping-term-ms
 #define TT 160
@@ -84,20 +85,6 @@
             flavor = "2-dim";
             step_size = <50>;
         };
-        slc: shift_leftclick {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE_LEFTCLICK";
-            #binding-cells = <0>;
-            bindings = <&blt NUMBERS SPACE>, <&mkp LCLK>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        src: shift_rightclick {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE_RIGHTCLICK";
-            #binding-cells = <0>;
-            bindings = <&kp BSPC>, <&mkp RCLK>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
     };
 
     conditional_layers {
@@ -137,13 +124,13 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
 // A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
-// Esc/Lsft|  Q  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
+// Esc/Lsft|  Q/Click  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
 // | Media/Play-Pause | Bspc/LC | SPC/Num/RC |                                                       | Ent | Tab |     |
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
-            &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &tt C_PP MEDIA &src &slc &kp RET &kp TAB
+            &hm LSHFT ESC &blt CLICK Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHFT Z
+            &tt C_PP MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
             >;
             sensor-bindings = <&inc_dec_kp BSPC BSPC>;
         };
@@ -230,6 +217,16 @@
                            &trans  &trans &trans    &trans  &trans
             >;
             trackball-bindings = <&tmv>;
+        };
+
+        click {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &kp LSHFT  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &kp LCTRL  &trans  &kp LALT  &kp LCMD    &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &mkp RCLK &mkp LCLK    &trans  &trans
+            >;
+            trackball-bindings = <&tmv_fine>;
         };
 
         scrolly_moly {
