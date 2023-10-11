@@ -88,15 +88,15 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_LEFTCLICK";
             #binding-cells = <0>;
-            bindings = <&kp BSPC>, <&mkp LCLK>;
-            mods = <(MOD_LSFT)>;
+            bindings = <&blt NUMBERS SPACE>, <&mkp LCLK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         src: shift_rightclick {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_RIGHTCLICK";
             #binding-cells = <0>;
-            bindings = <&blt NUMBERS SPACE>, <&mkp RCLK>;
-            mods = <(MOD_LSFT)>;
+            bindings = <&kp BSPC>, <&mkp RCLK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
@@ -143,7 +143,7 @@
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
             &hm LSHFT ESC &kp Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHIFT Z
-            &tt C_PP MEDIA &slc &src &kp RET &kp TAB
+            &tt C_PP MEDIA &src &slc &kp RET &kp TAB
             >;
             sensor-bindings = <&inc_dec_kp BSPC BSPC>;
         };
@@ -191,7 +191,6 @@
 	    &none &none &none &none &none &none &kp HOME &none &kp END &none
 	    &none &none &none &kp PG_DN &kp PG_UP
             >;
-            trackball-bindings = <&tsl>;
         };
 
         fn {
@@ -207,7 +206,6 @@
 	    &none &none &none &none &none
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC>;
-            trackball-bindings = <&tsl>;
         };
 
         bt {
@@ -232,7 +230,6 @@
                            &trans  &trans &trans    &trans  &trans
             >;
             trackball-bindings = <&tmv>;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         scrolly_moly {
@@ -240,7 +237,7 @@
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
-                           &trans  &slc &src        &trans  &trans
+                           &trans  &trans &trans        &trans  &trans
             >;
             trackball-bindings = <&tsl>;
         };
