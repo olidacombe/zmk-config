@@ -1,0 +1,264 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define MEDIA 1
+#define SYMBOLS 2
+#define NUMBERS 3
+#define NAV 4
+#define FUNCTION 5
+#define BLUETOOTH 6
+#define MOUSE 7
+#define CLICK 8
+#define SCRL 9
+#define BIRO 10
+
+// tapping-term-ms
+#define TT 160
+
+/ {
+  chosen {
+    zmk,matrix_transform = &five_column_transform;
+  };
+};
+
+/ {
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <TT>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+        hmpt: homerow_mods_prefer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_PREFER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <TT>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        blt: balanced_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BALANCED_LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <TT>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
+        };
+        tt: toggle_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TOGGLE_LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&tog>;
+        };
+        repeat_encoder: repeat_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "REPEAT_ENCODER";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp BSPC>, <&key_repeat>;
+        };
+        tsl: behavior_trackball_scroll {
+			compatible = "zmk,behavior-point-device-incremental";
+			label = "TRACKBALL_SCROLL";
+			#trackball-binding-cells = <0>;
+            mode = "scroll-mode";
+            flavor = "default";
+            scale_mode = "dividor";
+            scale_factor = <4>;
+            smoothing;
+		};
+        tkp_fast: behavior_trackball_key_press {
+            compatible = "zmk,behavior-point-device-directional";
+            label = "TRACKBALL_KEY_PRESS";
+            #trackball-binding-cells = <4>;
+            mode = "distance-mode";
+            flavor = "2-dim";
+            step_size = <50>;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        nav_ball_scroll {
+            if-layers = <MOUSE NAV>;
+            then-layer = <BIRO>;
+        };
+        num_ball_scroll {
+            if-layers = <MOUSE SYMBOLS>;
+            then-layer = <SCRL>;
+        };
+    };
+
+   macros {
+        vi_editing_mode: vi_editing_mode {
+            label = "vi editing-mode";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp S &kp E &kp T &kp SPACE &kp MINUS &kp O &kp SPACE &kp V &kp I &kp RET>;
+        };
+    };
+
+  combos {
+        compatible = "zmk,combos";
+        combo_vi_editing_mode {
+            timeout-ms = <50>;
+            key-positions = <27 28>;
+            bindings = <&vi_editing_mode>;
+        };
+    };
+
+  keymap {
+    compatible = "zmk,keymap";
+
+        default {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  '    |  ,  |  .  |  P/Nav  |  Y  |                             |  F/Fn  |  G  |  C/Caps  |    R    |  L   |
+// A/Sym |  O/Ctrl  |  E/Alt [A->F13]? |  U/Cmd  |  I  |           |  D  |  H/Cmd  |  T/Alt  |    N/Ctrl    |  S/Sym |
+// Esc/Lsft|  Q/Click  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
+// | Media/Play-Pause | Bspc/LC | SPC/Num/RC |                                                       | Ent | Tab |     |
+           bindings = <
+            &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
+            &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
+            &hm LSHFT ESC &blt CLICK Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHFT Z
+            &tt C_PP MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
+            >;
+            sensor-bindings = <&inc_dec_kp BSPC BSPC>;
+        };
+
+        medi_jah {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                           &tt C_PP MEDIA &trans &trans    &trans  &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        symbols {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  !  |  @  |  {  |  }  |     |                |         |    <    |    >   |  *  |   #  |
+//  ^  |  $  |  (  |  )  |  \  |                |    &    |    =    |    -   |  :  |   ;  |
+//  ~  |  `  |  [  |  ]  |     |                |         |    +    |    _   |  %  |   ?  |
+//         |  ,,  | |/&  | //\ |                |    "    |    `    |   ,,   |
+           bindings = <
+            &kp EXCL &hm LS(LCTRL) AT &hmpt LS(LALT) LBRC &hm LS(LCMD) RBRC &none &none &hm RS(RCMD) LT &hmpt RS(LALT) GT &hm RS(RCTRL) ASTERISK &hm LA(N3) HASH
+            &kp CARET &hm LCTRL DOLLAR &hmpt LALT LPAR &hm LCMD RPAR &kp BACKSLASH &kp AMPS &hm RCMD EQL &hmpt LALT MINUS &hm RCTRL COLON &kp SEMICOLON
+            &kp TILDE &kp GRAVE &kp LBKT &kp RBKT &none &none &kp PLUS &kp UNDERSCORE &kp PERCENT &kp QMARK
+            &trans &mt AMPS PIPE &mt BACKSLASH SLASH &kp DQT &kp GRAVE
+           >;
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+            trackball-bindings = <&tmv_fine>;
+        };
+
+        numbers {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//   s-f5  |  s-f6  |  s-f7 |  s-f8  |   |            |         |    4/<    |    5/>   |  6/*  |   7//  |
+//    s-f1   |  s-f2 |  s-f3 | s-f4 |   |             |   DEL   |    0/=    |    1/-   | 2/: |   3/;  |
+//     s-f9   | s-f10 | s-f11 | s-f12 |   |           |         |    8/+    |    9/_   | +/- | *//  |
+//         |      |     |      |     |      |    .    |    =    |      |
+           bindings = <
+	    &kp LS(F5) &kp LS(F6) &kp LS(F7) &kp LS(F8) &none &none &hmpt LT N4 &hmpt GT N5 &hmpt ASTERISK N6 &hmpt SLASH N7
+	    &kp LS(F1) &kp LS(F2) &kp LS(F3) &kp LS(F4) &none &kp DEL &hmpt EQL N0 &hmpt MINUS N1 &hmpt COLON N2 &hmpt SEMICOLON N3
+	    &kp LS(F9) &kp LS(F10) &kp LS(F11) &kp LS(F12) &none &none &hmpt PLUS N8 &hmpt UNDERSCORE N9 &hmpt MINUS PLUS &hmpt SLASH ASTERISK
+	    &none &none &none &kp DOT &kp EQL
+            >;
+            trackball-bindings = <&tsl>;
+        };
+
+        nav {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |    ^   |     |      |
+//     |     |     |     |     |                |         |    <    |    v   |  >  |      |
+//     |     |     |     |     |                |         |   HOME  |        | END |      |
+//         |      |     |      |     |      |    PgDN   |   PgUP  |      |
+           bindings = <
+	    &none &none &none &none &none &none &none &kp UP &none &none
+	    &none &none &none &none &none &none &kp LEFT &kp DOWN &kp RIGHT &none
+	    &none &none &none &none &none &none &kp HOME &none &kp END &none
+	    &none &none &none &kp PG_DN &kp PG_UP
+            >;
+        };
+
+        fn {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  F5 |  F6 | F7  | F8  |     |                |         |         |        |     |      |
+//  F1 |  F2 | F3  | F4  | DEL |                |         |         |        |     |      |
+//  F9 | F10 | F11 | F12 |     |                |   ,,    |   ,,    |        |     |      |
+//         |      |     |      |     |      |           |         |      |
+           bindings = <
+            &kp F5 &kp F6 &kp F7 &kp F8 &none &none &none &none &none &none
+            &kp F1 &kp F2 &kp F3 &kp F4 &kp DEL &none &none &none &none &none
+            &kp F9 &kp F10 &kp F11 &kp F12 &none &none &none &none &none &none
+	    &none &none &none &none &none
+            >;
+            sensor-bindings = <&inc_dec_kp C_BRI_DEC C_BRI_INC>;
+        };
+
+        bt {
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//     |     |     |     |     |                |         |         |        |     |      |
+//     |     |     |     |     |                |   P0    |    P1   |   P2   |  P3 |  P4  |
+//     |     |     |     |     |                | BT/USB  |         |        |     |      |
+//         | CLR  |     |      |
+           bindings = <
+            &none &none &none &none &none &none &none &none &none &none
+            &none &none &none &none &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+            &none &none &none &none &none &out OUT_TOG &none &none &none &none
+	        &none &bt BT_CLR &none &none &none
+            >;
+        };
+
+        mouse {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &trans &trans    &trans  &trans
+            >;
+            trackball-bindings = <&tmv>;
+        };
+
+        click {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &kp LSHFT  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &kp LCTRL  &trans  &kp LALT  &kp LCMD    &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &mkp RCLK &mkp LCLK    &trans  &trans
+            >;
+            trackball-bindings = <&tmv_fine>;
+        };
+
+        scrolly_moly {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &trans &trans        &trans  &trans
+            >;
+            trackball-bindings = <&tsl>;
+        };
+
+        // ball point
+        biro {
+            bindings = <
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+    &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                           &trans  &trans &trans    &trans  &trans
+            >;
+            trackball-bindings = <&tkp_fast LEFT RIGHT UP DOWN>;
+        };
+
+    };
+};

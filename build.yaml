@@ -14,8 +14,8 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: guppy_left
+    shield: tinkerball_left
   - board: nice_nano_v2
-    shield: guppy_right
+    shield: tinkerball_right
   - board: nice_nano_v2
     shield: settings_reset
