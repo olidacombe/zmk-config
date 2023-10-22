@@ -30,11 +30,12 @@
         flavor = FLAVOR; \
         tapping-term-ms = <TT>; \
         quick-tap-ms = <0>; \
-        // require-prior-idle-ms = <150>; \
         bindings = <HOLD>, <TAP>; \
         hold-trigger-key-positions = <TRIGGER_POS>; \
-        // hold-trigger-on-release; \
     )
+    // TODO try these sorts of things
+    // require-prior-idle-ms = <150>; \
+    // hold-trigger-on-release; \
 
 MAKE_HRM(bltl, &mo, &kp, "balanced", KEYS_R THUMBS) // left-hand layer-tap
 MAKE_HRM(bltr, &mo, &kp, "balanced", KEYS_L THUMBS) // right-hand layer-tap
@@ -42,6 +43,9 @@ MAKE_HRM(hml, &kp, &kp, "balanced", KEYS_R THUMBS) // left-hand HRMs
 MAKE_HRM(hmr, &kp, &kp, "balanced", KEYS_L THUMBS) // right-hand HRMs
 MAKE_HRM(hmlt, &kp, &kp, "tap-preferred", KEYS_R THUMBS) // left-hand HRMs
 MAKE_HRM(hmrt, &kp, &kp, "tap-preferred", KEYS_L THUMBS) // right-hand HRMs
+
+ZMK_COMBO(lpar, &kp LPAR, LM1 LM2, BASE)
+ZMK_COMBO(rpar, &kp RPAR, LM2 LM3, BASE)
 
 / {
   chosen {
@@ -106,9 +110,6 @@ MAKE_HRM(hmrt, &kp, &kp, "tap-preferred", KEYS_L THUMBS) // right-hand HRMs
         };
     };
 
-  ZMK_COMBO(lpar, &kp LPAR, LM1 LM2, BASE)
-  ZMK_COMBO(rpar, &kp RPAR, LM2 LM3, BASE)
-
   keymap {
     compatible = "zmk,keymap";
 
@@ -119,7 +120,7 @@ MAKE_HRM(hmrt, &kp, &kp, "tap-preferred", KEYS_L THUMBS) // right-hand HRMs
 // Esc/Lsft|  Q/Click  |  J  |  K  |  X  |                               |  B  |  M  |  W  |    V    |Z/Rsft|
 // | Media/Play-Pause | Bspc/LC | SPC/Num/RC |                                                       | Ent | Tab |     |
            bindings = <
-            &lt BLUETOOTH APOS &kp COMMA &kp DOT &bltl NAV P &kp Y &lt FUNCTION F &kp G &ht CAPS C &kp R  &kp L
+            &lt BLUETOOTH APOS &kp COMMA &kp DOT &bltl NAV P &kp Y &lt FUNCTION F &kp G &hmr CAPS C &kp R  &kp L
             &bltl SYMBOLS A &hml LCTRL O &hmlt LALT E &hml LCMD U &kp I &kp D &hmr RCMD H &hmrt LALT T &hmr RCTRL N &bltr SYMBOLS S
             &hml LSHFT ESC &bltl CLICK Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hmr RSHFT Z
             &tt C_PP MEDIA &kp BSPC &bltl NUMBERS SPACE &kp RET &kp TAB
