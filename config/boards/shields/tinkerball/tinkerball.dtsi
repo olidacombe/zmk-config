@@ -55,7 +55,7 @@
         label = "LEFT_ENCODER";
         a-gpios = <&pro_micro_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        resolution = <4>;
+        resolution = <2>;
         // steps = <60>;
         status = "disabled";
     };
