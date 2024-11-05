@@ -129,7 +129,7 @@
            bindings = <
             &lt BLUETOOTH APOS &kp COMMA &kp DOT &blt NAV P &kp Y &lt FUNCTION F &kp G &hm CAPS C &kp R  &kp L
             &blt SYMBOLS A &hm LCTRL O &hmpt LALT E &hm LCMD U &kp I &kp D &hm RCMD H &hmpt LALT T &hm RCTRL N &blt SYMBOLS S
-            &hm LSHFT ESC &blt CLICK Q &kp J &kp K &kp X &kp B &kp M &kp W &kp V &hm RSHFT Z
+            &hm LSHFT ESC &blt CLICK Q &kp J &kp K &kp X &kp B &kp M &kp W &blt CLICK V &hm RSHFT Z
             &tt C_PP MEDIA &kp BSPC &blt NUMBERS SPACE &kp RET &kp TAB
             >;
             sensor-bindings = <&inc_dec_kp BSPC BSPC>;
