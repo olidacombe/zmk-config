@@ -234,7 +234,7 @@
     &trans  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &kp LSHFT  &trans     &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans
     &kp LCTRL  &trans  &kp LALT  &kp LCMD    &trans    &trans  &trans  &trans  &trans  &trans
-                           &trans  &mkp RCLK &mkp LCLK    &trans  &trans
+                           &trans  &mkp RCLK &mkp LCLK    &mkp LCLK  &mkp RCLK
             >;
             trackball-bindings = <&tmv_fine>;
         };
